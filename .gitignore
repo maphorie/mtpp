@@ -1,3 +1,11 @@
+/.vscode/
+/tests/data/sampledata-out-utf8.csv
+/tests/data/sampledata-out-sjis.csv
+/tests/data/sampledata-out-utf8.tsv
+/tests/data/sampledata-out-sjis.tsv
+/tests/data/sampledata-out.xlsx
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
