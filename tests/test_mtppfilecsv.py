@@ -6,6 +6,7 @@ INPUT_FILE_UTF8 = "tests/data/sampledata-utf8.csv"
 INPUT_FILE_SJIS = "tests/data/sampledata-sjis.csv"
 OUTPUT_FILE_UTF8 = "tests/data/sampledata-out-utf8.csv"
 OUTPUT_FILE_SJIS = "tests/data/sampledata-out-sjis.csv"
+ENCODING_UTF8 = "UTF-8"
 ENCODING_SJIS = "Shift_JIS"
 RECORDS = [
     {"都道府県": "鹿児島県", "カラム1": "119", "カラム2": "250"},
@@ -38,7 +39,7 @@ RECORDS = [
 
 class TestMTPPFileCSV:
     def test_csv_instance_utf8(self):
-        target = MTPPFileCSV.read(INPUT_FILE_UTF8)
+        target = MTPPFileCSV.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert isinstance(target, MTPPData)
 
     def test_csv_instance_sjis(self):
@@ -46,7 +47,7 @@ class TestMTPPFileCSV:
         assert isinstance(target, MTPPData)
 
     def test_csv_read_utf8(self):
-        target = MTPPFileCSV.read(INPUT_FILE_UTF8)
+        target = MTPPFileCSV.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert target == RECORDS
 
     def test_csv_read_sjis(self):
@@ -55,8 +56,8 @@ class TestMTPPFileCSV:
 
     def test_csv_write_utf8(self):
         data = MTPPData(RECORDS)
-        MTPPFileCSV.write(data, OUTPUT_FILE_UTF8)
-        with open(OUTPUT_FILE_UTF8) as f:
+        MTPPFileCSV.write(data, OUTPUT_FILE_UTF8, ENCODING_UTF8)
+        with open(OUTPUT_FILE_UTF8, encoding=ENCODING_UTF8) as f:
             reader = csv.DictReader(f)
             records = list(reader)
         assert records == RECORDS

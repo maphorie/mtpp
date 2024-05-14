@@ -3,6 +3,7 @@ from mtpp import MTPPData, MTPPFileXML
 
 INPUT_FILE_UTF8 = "tests/data/sampledata-utf8.xml"
 INPUT_FILE_SJIS = "tests/data/sampledata-sjis.xml"
+ENCODING_UTF8 = "UTF-8"
 ENCODING_SJIS = "Shift_JIS"
 RECORDS = [
     {"都道府県": "鹿児島県", "カラム1": "119", "カラム2": "250"},
@@ -35,11 +36,11 @@ RECORDS = [
 
 class TestMTPPFileXML:
     def test_xml_instance(self):
-        target = MTPPFileXML.read(INPUT_FILE_UTF8)
+        target = MTPPFileXML.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert isinstance(target, MTPPData)
 
     def test_xml_read_utf8(self):
-        target = MTPPFileXML.read(INPUT_FILE_UTF8)
+        target = MTPPFileXML.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert target == RECORDS
 
     def test_xml_read_sjis(self):
