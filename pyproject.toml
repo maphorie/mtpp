@@ -1,3 +1,19 @@
+[project]
+name = "mtpp"
+version = "2024.0.0"
+dependencies = [
+  "openpyxl",
+  "pandas",
+]
+authors = [
+  { name = "maphorie" },
+]
+maintainers = [
+  { name = "mahori" },
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+
 [tool.black]
 line-length = 127
 
