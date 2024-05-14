@@ -6,6 +6,7 @@ INPUT_FILE_UTF8 = "tests/data/sampledata-utf8.tsv"
 INPUT_FILE_SJIS = "tests/data/sampledata-sjis.tsv"
 OUTPUT_FILE_UTF8 = "tests/data/sampledata-out-utf8.tsv"
 OUTPUT_FILE_SJIS = "tests/data/sampledata-out-sjis.tsv"
+ENCODING_UTF8 = "UTF-8"
 ENCODING_SJIS = "Shift_JIS"
 RECORDS = [
     {"都道府県": "鹿児島県", "カラム1": "119", "カラム2": "250"},
@@ -38,7 +39,7 @@ RECORDS = [
 
 class TestMTPPFileTSV:
     def test_tsv_instance_utf8(self):
-        target = MTPPFileTSV.read(INPUT_FILE_UTF8)
+        target = MTPPFileTSV.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert isinstance(target, MTPPData)
 
     def test_tsv_instance_sjis(self):
@@ -46,7 +47,7 @@ class TestMTPPFileTSV:
         assert isinstance(target, MTPPData)
 
     def test_tsv_read_utf8(self):
-        target = MTPPFileTSV.read(INPUT_FILE_UTF8)
+        target = MTPPFileTSV.read(INPUT_FILE_UTF8, ENCODING_UTF8)
         assert target == RECORDS
 
     def test_tsv_read_sjis(self):
@@ -55,8 +56,8 @@ class TestMTPPFileTSV:
 
     def test_tsv_write_utf8(self):
         data = MTPPData(RECORDS)
-        MTPPFileTSV.write(data, OUTPUT_FILE_UTF8)
-        with open(OUTPUT_FILE_UTF8) as f:
+        MTPPFileTSV.write(data, OUTPUT_FILE_UTF8, ENCODING_UTF8)
+        with open(OUTPUT_FILE_UTF8, encoding=ENCODING_UTF8) as f:
             reader = csv.DictReader(f, dialect="excel-tab")
             records = list(reader)
         assert records == RECORDS
