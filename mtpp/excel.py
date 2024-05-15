@@ -51,14 +51,14 @@ class MTPPFileExcel(MTPPFile):
         """
         workbook = Workbook()
         wworksheet = workbook.active
-        wworksheet.title = sheet_name  # type: ignore
+        wworksheet.title = sheet_name
 
         rows = data.rows
         headers = rows[0].keys()
 
-        wworksheet.append(list(headers))  # type: ignore
+        wworksheet.append(list(headers))
         for row in rows:
             row_data = [row[header] for header in headers]
-            wworksheet.append(row_data)  # type: ignore
+            wworksheet.append(row_data)
 
         workbook.save(file)

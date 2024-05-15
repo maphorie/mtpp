@@ -19,7 +19,6 @@ PandasおよびPythonスクリプトでの処理は
   - ExcelファイルはMTPPFileExcelクラス
 """
 
-
 import copy
 import math
 from pandas import DataFrame
@@ -42,7 +41,7 @@ class MTPPData:
     def __init__(self, value: object) -> None:
         if isinstance(value, list):
             rows = copy.deepcopy(value)
-            self._data_frame = DataFrame.from_dict(rows)  # type: ignore
+            self._data_frame = DataFrame.from_dict(rows)
             self._rows = rows
         elif isinstance(value, DataFrame):
             data_frame = copy.deepcopy(value)
@@ -55,7 +54,7 @@ class MTPPData:
         if isinstance(value, self.__class__):
             return self.__dict__ == value.__dict__
         if isinstance(value, DataFrame):
-            return self._data_frame == value  # type: ignore
+            return self._data_frame == value
         if isinstance(value, list):
             return self._rows == value
         raise NotImplementedError
