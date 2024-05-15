@@ -23,6 +23,17 @@ profile = "black"
 [tool.mypy]
 ignore_missing_imports = true
 
+[tool.pylint.'MESSAGES CONTROL']
+recursive = true
+max-line-length = 127
+disable = [
+  "R0801",
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "missing-module-docstring",
+  "too-few-public-methods",
+]
+
 [tool.pytest.ini_options]
 filterwarnings = [
   'ignore:datetime\.datetime\.utcnow\(\) is deprecated:DeprecationWarning',
