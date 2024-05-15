@@ -63,6 +63,7 @@ def python_call_function(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
     for prefecture, rows in prefectures.items():
         found = False
+        index = 0
         prev = 0
         for index, row in enumerate(rows):
             if prev > 100:
