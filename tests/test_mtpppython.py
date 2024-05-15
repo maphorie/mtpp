@@ -61,19 +61,18 @@ def python_call_function(rows: list[dict[str, str]]) -> list[dict[str, str]]:
         prefecture = row["都道府県"]
         prefectures[prefecture].append(row)
 
-    for prefecture, rows in prefectures.items():
+    for prefecture, values in prefectures.items():
         found = False
         index = 0
         prev = 0
-        for index, row in enumerate(rows):
+        for index, value in enumerate(values):
             if prev > 100:
                 found = True
                 break
-            prev = int(row["カラム1"])
+            prev = int(value["カラム1"])
         if not found:
             index += 1
-        del rows[index:]
-        prefectures[prefecture] = rows
+        del values[index:]
 
     rows = [row for rows in prefectures.values() for row in rows]
 
