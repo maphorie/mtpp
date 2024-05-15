@@ -1,5 +1,5 @@
 import pandas
-from typing import Literal, Optional, Union
+from typing import Literal, Optional
 from pandas import DataFrame, Series
 from .core import MTPPCall, MTPPData
 
@@ -73,7 +73,7 @@ def sort_values(data_frame: DataFrame, by: list[str]) -> DataFrame:
 
 def sum_of_column(
     data_frame: DataFrame, column: str, /, groupby: Optional[list[str]] = None, as_index: bool = True
-) -> Union[DataFrame, Series]:
+) -> DataFrame:
     if groupby is None:
         return data_frame[column].sum()
     return data_frame.groupby(groupby, as_index=as_index)[column].sum()
