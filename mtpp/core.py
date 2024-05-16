@@ -21,6 +21,7 @@ PandasおよびPythonスクリプトでの処理は
 
 import copy
 import math
+from abc import ABC, abstractmethod
 from pandas import DataFrame
 
 
@@ -101,10 +102,20 @@ class MTPPData:
 #
 
 
-class MTPPFile:
+class MTPPFile(ABC):
     """
     ファイルからの読み込みと書き込みを行う基底クラス
     """
+
+    @staticmethod
+    @abstractmethod
+    def read(file: str, *args, **kwargs) -> MTPPData:
+        raise NotImplementedError
+
+    @staticmethod
+    @abstractmethod
+    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+        raise NotImplementedError
 
 
 #

@@ -1,4 +1,4 @@
-from typing import Optional
+import sys
 from xml.etree import ElementTree
 from .core import MTPPData, MTPPFile
 
@@ -14,7 +14,7 @@ class MTPPFileXML(MTPPFile):
     """
 
     @staticmethod
-    def read(file: str, encoding: Optional[str] = None) -> MTPPData:
+    def read(file: str, *args, **kwargs) -> MTPPData:
         """
         XMLファイルからMTPPDataクラスのインスタンスを作成
 
@@ -25,6 +25,8 @@ class MTPPFileXML(MTPPFile):
         Returns:
         MTPPDataクラスのインスタンス
         """
+        encoding = kwargs.pop("encoding") if "encoding" in kwargs else sys.getfilesystemencoding()
+
         with open(file, "r", encoding=encoding) as f:
             content = f.read()
 
@@ -34,7 +36,7 @@ class MTPPFileXML(MTPPFile):
         return MTPPData(rows)
 
     @staticmethod
-    def write(data: MTPPData, file: str, encoding: Optional[str] = None) -> None:
+    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         XMLファイルにエクスポート
 
