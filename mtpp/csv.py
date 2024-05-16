@@ -29,7 +29,7 @@ class MTPPFileCSV(MTPPFileDSV):
         return super().read(file, *args, **kwargs)
 
     @classmethod
-    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
+    def write(cls, file: str, data: MTPPData, *args, **kwargs) -> None:
         """
         CSVファイルにエクスポート
 
@@ -40,4 +40,4 @@ class MTPPFileCSV(MTPPFileDSV):
         """
         kwargs["dialect"] = "excel"
 
-        super().write(data, file, *args, **kwargs)
+        super().write(file, data, *args, **kwargs)

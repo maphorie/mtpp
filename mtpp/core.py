@@ -114,7 +114,7 @@ class MTPPFile(ABC):
 
     @classmethod
     @abstractmethod
-    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
+    def write(cls, file: str, data: MTPPData, *args, **kwargs) -> None:
         raise NotImplementedError
 
 

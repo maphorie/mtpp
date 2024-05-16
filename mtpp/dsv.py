@@ -38,7 +38,7 @@ class MTPPFileDSV(MTPPFile):
         return MTPPData(records)
 
     @classmethod
-    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
+    def write(cls, file: str, data: MTPPData, *args, **kwargs) -> None:
         """
         DSVファイルにエクスポート
 

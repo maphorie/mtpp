@@ -30,7 +30,7 @@ class TestMTPPFileCSV:
 
     def test_csv_write_utf8(self):
         data = MTPPData(RECORDS)
-        MTPPFileCSV.write(data, OUTPUT_FILE_CSV_UTF8, encoding=ENCODING_UTF8)
+        MTPPFileCSV.write(OUTPUT_FILE_CSV_UTF8, data, encoding=ENCODING_UTF8)
         with open(OUTPUT_FILE_CSV_UTF8, encoding=ENCODING_UTF8) as f:
             reader = DictReader(f)
             records = list(reader)
@@ -38,7 +38,7 @@ class TestMTPPFileCSV:
 
     def test_csv_write_sjis(self):
         data = MTPPData(RECORDS)
-        MTPPFileCSV.write(data, OUTPUT_FILE_CSV_SJIS, encoding=ENCODING_SJIS)
+        MTPPFileCSV.write(OUTPUT_FILE_CSV_SJIS, data, encoding=ENCODING_SJIS)
         with open(OUTPUT_FILE_CSV_SJIS, encoding=ENCODING_SJIS) as f:
             reader = DictReader(f)
             records = list(reader)
