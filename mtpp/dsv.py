@@ -13,8 +13,8 @@ class MTPPFileDSV(MTPPFile):
     DSV(CSV, TSV)ファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, *args, **kwargs) -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         DSVファイルからMTPPDataクラスのインスタンスを作成
 
@@ -37,8 +37,8 @@ class MTPPFileDSV(MTPPFile):
 
         return MTPPData(records)
 
-    @staticmethod
-    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         DSVファイルにエクスポート
 

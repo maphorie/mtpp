@@ -107,14 +107,14 @@ class MTPPFile(ABC):
     ファイルからの読み込みと書き込みを行う基底クラス
     """
 
-    @staticmethod
+    @classmethod
     @abstractmethod
-    def read(file: str, *args, **kwargs) -> MTPPData:
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         raise NotImplementedError
 
-    @staticmethod
+    @classmethod
     @abstractmethod
-    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         raise NotImplementedError
 
 

@@ -13,8 +13,8 @@ class MTPPFileXML(MTPPFile):
     XMLファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, *args, **kwargs) -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         XMLファイルからMTPPDataクラスのインスタンスを作成
 
@@ -35,8 +35,8 @@ class MTPPFileXML(MTPPFile):
 
         return MTPPData(rows)
 
-    @staticmethod
-    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         XMLファイルにエクスポート
 

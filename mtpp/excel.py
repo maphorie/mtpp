@@ -13,8 +13,8 @@ class MTPPFileExcel(MTPPFile):
     Excelファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, *args, **kwargs) -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         ExcelファイルからMTPPDataクラスのインスタンスを作成
 
@@ -41,9 +41,8 @@ class MTPPFileExcel(MTPPFile):
 
         return MTPPData(data)
 
-    @staticmethod
-    # def write(data: MTPPData, file: str, sheet_name: str = "Sheet1") -> None:
-    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         Excelファイルにエクスポート
 
