@@ -1,6 +1,5 @@
-import csv
-from typing import Optional
-from .core import MTPPData, MTPPFile
+from .core import MTPPData
+from .dsv import MTPPFileDSV
 
 
 #
@@ -8,14 +7,13 @@ from .core import MTPPData, MTPPFile
 #
 
 
-# pylint: disable=duplicate-code
-class MTPPFileTSV(MTPPFile):
+class MTPPFileTSV(MTPPFileDSV):
     """
     TSVファイルからの読み込みと書き込みを行うクラス
     """
 
     @staticmethod
-    def read(file: str, encoding: Optional[str] = None) -> MTPPData:
+    def read(file: str, *args, **kwargs) -> MTPPData:
         """
         TSVファイルからMTPPDataクラスのインスタンスを作成
 
@@ -26,14 +24,12 @@ class MTPPFileTSV(MTPPFile):
         Returns:
         MTPPDataクラスのインスタンス
         """
-        with open(file, "r", encoding=encoding) as f:
-            reader = csv.DictReader(f, dialect="excel-tab")
-            records = list(reader)
+        kwargs["dialect"] = "excel-tab"
 
-        return MTPPData(records)
+        return MTPPFileDSV.read(file, *args, **kwargs)
 
     @staticmethod
-    def write(data: MTPPData, file: str, encoding: Optional[str] = None) -> None:
+    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         TSVファイルにエクスポート
 
@@ -42,10 +38,6 @@ class MTPPFileTSV(MTPPFile):
         filepath (str): TSVファイル名
         encoding (str | None): TSVファイルのエンコーディング
         """
-        rows = data.rows
-        fieldnames = rows[0].keys()
+        kwargs["dialect"] = "excel-tab"
 
-        with open(file, "w", encoding=encoding) as f:
-            writer = csv.DictWriter(f, fieldnames, dialect="excel-tab")
-            writer.writeheader()
-            writer.writerows(rows)
+        MTPPFileDSV.write(data, file, *args, **kwargs)
