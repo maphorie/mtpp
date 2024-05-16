@@ -27,10 +27,10 @@ ignore_missing_imports = true
 recursive = true
 max-line-length = 127
 disable = [
-  "missing-class-docstring",
-  "missing-function-docstring",
-  "missing-module-docstring",
-  "too-few-public-methods",
+  "missing-module-docstring",    # C0114
+  "missing-class-docstring",     # C0115
+  "missing-function-docstring",  # C0116
+  "too-few-public-methods",      # R0903
 ]
 
 [tool.pytest.ini_options]
