@@ -19,7 +19,7 @@ class TestMTPPFileExcel:
 
     def test_excel_write(self):
         data = MTPPData(RECORDS)
-        MTPPFileExcel.write(data, OUTPUT_FILE_EXCEL, EXCEL_SHEET)
+        MTPPFileExcel.write(OUTPUT_FILE_EXCEL, data, EXCEL_SHEET)
         workbook = openpyxl.load_workbook(OUTPUT_FILE_EXCEL)
         wworksheet = workbook[EXCEL_SHEET]
         it = wworksheet.values

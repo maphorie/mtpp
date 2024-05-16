@@ -42,7 +42,7 @@ class MTPPFileExcel(MTPPFile):
         return MTPPData(data)
 
     @classmethod
-    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
+    def write(cls, file: str, data: MTPPData, *args, **kwargs) -> None:
         """
         Excelファイルにエクスポート
 

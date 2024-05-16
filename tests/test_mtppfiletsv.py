@@ -30,7 +30,7 @@ class TestMTPPFileTSV:
 
     def test_tsv_write_utf8(self):
         data = MTPPData(RECORDS)
-        MTPPFileTSV.write(data, OUTPUT_FILE_TSV_UTF8, encoding=ENCODING_UTF8)
+        MTPPFileTSV.write(OUTPUT_FILE_TSV_UTF8, data, encoding=ENCODING_UTF8)
         with open(OUTPUT_FILE_TSV_UTF8, encoding=ENCODING_UTF8) as f:
             reader = DictReader(f, dialect="excel-tab")
             records = list(reader)
@@ -38,7 +38,7 @@ class TestMTPPFileTSV:
 
     def test_tsv_write_sjis(self):
         data = MTPPData(RECORDS)
-        MTPPFileTSV.write(data, OUTPUT_FILE_TSV_SJIS, encoding=ENCODING_SJIS)
+        MTPPFileTSV.write(OUTPUT_FILE_TSV_SJIS, data, encoding=ENCODING_SJIS)
         with open(OUTPUT_FILE_TSV_SJIS, encoding=ENCODING_SJIS) as f:
             reader = DictReader(f, dialect="excel-tab")
             records = list(reader)
