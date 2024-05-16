@@ -1,9 +1,8 @@
 from collections import defaultdict
+
 from mtpp import MTPPData, MTPPPython
-from .constant import (
-    PYTHON_BEFORE_CALL,
-    PYTHON_AFTER_CALL,
-)
+
+from .constant import PYTHON_BEFORE_CALL, PYTHON_AFTER_CALL
 
 
 def python_call_function(rows: list[dict[str, str]]) -> list[dict[str, str]]:

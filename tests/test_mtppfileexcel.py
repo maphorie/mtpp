@@ -1,11 +1,8 @@
 import openpyxl
+
 from mtpp import MTPPData, MTPPFileExcel
-from .constant import (
-    INPUT_FILE_EXCEL,
-    OUTPUT_FILE_EXCEL,
-    EXCEL_SHEET,
-    RECORDS,
-)
+
+from .constant import INPUT_FILE_EXCEL, OUTPUT_FILE_EXCEL, EXCEL_SHEET, RECORDS
 
 
 class TestMTPPFileExcel:

@@ -1,9 +1,8 @@
 from pandas import DataFrame
+
 from mtpp import MTPPData, MTPPPandas
-from .constant import (
-    PANDAS_BEFORE_CALL,
-    PANDAS_AFTER_CALL,
-)
+
+from .constant import PANDAS_BEFORE_CALL, PANDAS_AFTER_CALL
 
 
 def pandas_call_function(data_frame: DataFrame) -> DataFrame:
