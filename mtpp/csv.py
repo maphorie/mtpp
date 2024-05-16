@@ -1,6 +1,5 @@
-import csv
-from typing import Optional
-from .core import MTPPData, MTPPFile
+from .core import MTPPData
+from .dsv import MTPPFileDSV
 
 
 #
@@ -8,14 +7,13 @@ from .core import MTPPData, MTPPFile
 #
 
 
-# pylint: disable=duplicate-code
-class MTPPFileCSV(MTPPFile):
+class MTPPFileCSV(MTPPFileDSV):
     """
     CSVファイルからの読み込みと書き込みを行うクラス
     """
 
     @staticmethod
-    def read(file: str, encoding: Optional[str] = None) -> MTPPData:
+    def read(file: str, *args, **kwargs) -> MTPPData:
         """
         CSVファイルからMTPPDataクラスのインスタンスを作成
 
@@ -26,14 +24,12 @@ class MTPPFileCSV(MTPPFile):
         Returns:
         MTPPDataクラスのインスタンス
         """
-        with open(file, "r", encoding=encoding) as f:
-            reader = csv.DictReader(f)
-            records = list(reader)
+        kwargs["dialect"] = "excel"
 
-        return MTPPData(records)
+        return MTPPFileDSV.read(file, *args, **kwargs)
 
     @staticmethod
-    def write(data: MTPPData, file: str, encoding: Optional[str] = None) -> None:
+    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         CSVファイルにエクスポート
 
@@ -42,10 +38,6 @@ class MTPPFileCSV(MTPPFile):
         filepath (str): CSVファイル名
         encoding (str | None): CSVファイルのエンコーディング
         """
-        rows = data.rows
-        fieldnames = rows[0].keys()
+        kwargs["dialect"] = "excel"
 
-        with open(file, "w", encoding=encoding) as f:
-            writer = csv.DictWriter(f, fieldnames)
-            writer.writeheader()
-            writer.writerows(rows)
+        MTPPFileDSV.write(data, file, *args, **kwargs)
