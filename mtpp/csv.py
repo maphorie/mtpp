@@ -12,8 +12,8 @@ class MTPPFileCSV(MTPPFileDSV):
     CSVファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, *args, **kwargs) -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         CSVファイルからMTPPDataクラスのインスタンスを作成
 
@@ -26,10 +26,10 @@ class MTPPFileCSV(MTPPFileDSV):
         """
         kwargs["dialect"] = "excel"
 
-        return MTPPFileDSV.read(file, *args, **kwargs)
+        return super().read(file, *args, **kwargs)
 
-    @staticmethod
-    def write(data: MTPPData, file: str, *args, **kwargs) -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         CSVファイルにエクスポート
 
@@ -40,4 +40,4 @@ class MTPPFileCSV(MTPPFileDSV):
         """
         kwargs["dialect"] = "excel"
 
-        MTPPFileDSV.write(data, file, *args, **kwargs)
+        super().write(data, file, *args, **kwargs)

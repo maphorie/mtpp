@@ -13,8 +13,8 @@ class MTPPFileExcel(MTPPFile):
     Excelファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, sheet_name: str = "Sheet1") -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         ExcelファイルからMTPPDataクラスのインスタンスを作成
 
@@ -25,6 +25,8 @@ class MTPPFileExcel(MTPPFile):
         Returns:
         MTPPDataクラスのインスタンス
         """
+        sheet_name = kwargs.pop("sheet_name") if "sheet_name" in kwargs else "Sheet1"
+
         workbook = openpyxl.load_workbook(file)
         wworksheet = workbook[sheet_name]
         it = wworksheet.values
@@ -39,8 +41,8 @@ class MTPPFileExcel(MTPPFile):
 
         return MTPPData(data)
 
-    @staticmethod
-    def write(data: MTPPData, file: str, sheet_name: str = "Sheet1") -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         Excelファイルにエクスポート
 
@@ -49,6 +51,8 @@ class MTPPFileExcel(MTPPFile):
         filepath (str): Excelファイル名
         sheet_name (str): Excelファイルのシート名
         """
+        sheet_name = kwargs.pop("sheet_name") if "sheet_name" in kwargs else "Sheet1"
+
         workbook = Workbook()
         wworksheet = workbook.active
         wworksheet.title = sheet_name

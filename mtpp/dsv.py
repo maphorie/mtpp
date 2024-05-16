@@ -1,3 +1,4 @@
+import sys
 from csv import DictReader, DictWriter
 from .core import MTPPData, MTPPFile
 
@@ -7,14 +8,13 @@ from .core import MTPPData, MTPPFile
 #
 
 
-# pylint: disable=duplicate-code
 class MTPPFileDSV(MTPPFile):
     """
-    DSVファイルからの読み込みと書き込みを行うクラス
+    DSV(CSV, TSV)ファイルからの読み込みと書き込みを行うクラス
     """
 
-    @staticmethod
-    def read(file: str, *_, **kwargs) -> MTPPData:
+    @classmethod
+    def read(cls, file: str, *args, **kwargs) -> MTPPData:
         """
         DSVファイルからMTPPDataクラスのインスタンスを作成
 
@@ -25,9 +25,7 @@ class MTPPFileDSV(MTPPFile):
         Returns:
         MTPPDataクラスのインスタンス
         """
-        if "encoding" not in kwargs:
-            raise KeyError
-        encoding = kwargs.pop("encoding")
+        encoding = kwargs.pop("encoding") if "encoding" in kwargs else sys.getfilesystemencoding()
 
         if "dialect" not in kwargs:
             raise KeyError
@@ -39,8 +37,8 @@ class MTPPFileDSV(MTPPFile):
 
         return MTPPData(records)
 
-    @staticmethod
-    def write(data: MTPPData, file: str, *_, **kwargs) -> None:
+    @classmethod
+    def write(cls, data: MTPPData, file: str, *args, **kwargs) -> None:
         """
         DSVファイルにエクスポート
 
@@ -49,9 +47,7 @@ class MTPPFileDSV(MTPPFile):
         filepath (str): DSVファイル名
         encoding (str | None): DSVファイルのエンコーディング
         """
-        if "encoding" not in kwargs:
-            raise KeyError
-        encoding = kwargs.pop("encoding")
+        encoding = kwargs.pop("encoding") if "encoding" in kwargs else sys.getfilesystemencoding()
 
         if "dialect" not in kwargs:
             raise KeyError
