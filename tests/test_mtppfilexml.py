@@ -1,4 +1,5 @@
 from mtpp import MTPPData, MTPPFileXML
+
 from .constant import (
     INPUT_FILE_XML_UTF8,
     INPUT_FILE_XML_SJIS,

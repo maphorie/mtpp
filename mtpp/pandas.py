@@ -1,6 +1,8 @@
 from typing import Literal, Optional
+
 import pandas
 from pandas import DataFrame, Series
+
 from .core import MTPPCall, MTPPData
 
 

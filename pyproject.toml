@@ -19,6 +19,8 @@ line-length = 127
 
 [tool.isort]
 profile = "black"
+lines_after_imports = 2
+no_inline_sort = true
 
 [tool.mypy]
 ignore_missing_imports = true

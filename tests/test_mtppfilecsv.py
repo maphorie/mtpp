@@ -1,5 +1,7 @@
 from csv import DictReader
+
 from mtpp import MTPPData, MTPPFileCSV
+
 from .constant import (
     INPUT_FILE_CSV_UTF8,
     INPUT_FILE_CSV_SJIS,
