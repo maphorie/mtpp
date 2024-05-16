@@ -58,6 +58,7 @@ def index_to_threshold(rows: list[dict[str, str]], column: str, threshold: Union
     threshold (T): 閾値
     """
     found = False
+    index = 0
 
     for index, row in enumerate(rows):
         current: Union[int, float]
@@ -102,6 +103,7 @@ def index_on_threshold(rows: list[dict[str, str]], column: str, threshold: Union
         raise NotImplementedError
 
     found = False
+    index = 0
 
     for index, row in enumerate(rows):
         if prev > threshold:

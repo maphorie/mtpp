@@ -8,6 +8,7 @@ from .core import MTPPData, MTPPFile
 #
 
 
+# pylint: disable=duplicate-code
 class MTPPFileCSV(MTPPFile):
     """
     CSVファイルからの読み込みと書き込みを行うクラス
