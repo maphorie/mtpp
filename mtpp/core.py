@@ -124,9 +124,13 @@ class MTPPFile(ABC):
 #
 
 
-class MTPPCall:
+class MTPPCall(ABC):
     """
     何らかの処理をするためのクラス
 
     実際の処理はクロージャ(関数，メソッド，ラムダ関数)をつくりそれを__call__メソッドに渡すことで行う
     """
+
+    @abstractmethod
+    def __call__(self, data: MTPPData, call_function, /, *args) -> MTPPData:
+        raise NotImplementedError
