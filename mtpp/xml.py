@@ -20,8 +20,7 @@ class MTPPFileXML(MTPPFile):
         XMLファイルからMTPPDataクラスのインスタンスを作成
 
         Parameters:
-        filepath (str): XMLファイル名
-        encoding (str | None): XMLファイルのエンコーディング
+        file (str): XMLファイル名
 
         Returns:
         MTPPDataクラスのインスタンス
@@ -42,8 +41,7 @@ class MTPPFileXML(MTPPFile):
         XMLファイルにエクスポート
 
         Parameters:
+        file (str): XMLファイル名
         data (MTPPData) MTPPDataクラスのインスタンス
-        filepath (str): XMLファイル名
-        encoding (str | None): XMLファイルのエンコーディング
         """
         raise NotImplementedError
