@@ -56,7 +56,7 @@ def index_to_threshold(rows: list[dict[str, str]], column: str, threshold: Union
     Parameters:
     rows (list[dict[str, str]]) 対象データ
     column (str): 対象カラム名
-    threshold (T): 閾値
+    threshold (int | float): 閾値
     """
     index = 0
 
@@ -89,7 +89,7 @@ def index_on_threshold(rows: list[dict[str, str]], column: str, threshold: Union
     Parameters:
     rows (list[dict[str, str]]) 対象データ
     column (str): 対象カラム名
-    threshold (T): 閾値
+    threshold (int | float): 閾値
     """
     prev: Union[int, float]
 
