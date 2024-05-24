@@ -20,8 +20,7 @@ class MTPPFileDSV(MTPPFile):
         DSVファイルからMTPPDataクラスのインスタンスを作成
 
         Parameters:
-        filepath (str): DSVファイル名
-        encoding (str | None): DSVファイルのエンコーディング
+        file (str): DSVファイル名
 
         Returns:
         MTPPDataクラスのインスタンス
@@ -44,9 +43,8 @@ class MTPPFileDSV(MTPPFile):
         DSVファイルにエクスポート
 
         Parameters:
+        file (str): DSVファイル名
         data (MTPPData) MTPPDataクラスのインスタンス
-        filepath (str): DSVファイル名
-        encoding (str | None): DSVファイルのエンコーディング
         """
         encoding = kwargs.pop("encoding") if "encoding" in kwargs else sys.getfilesystemencoding()
 

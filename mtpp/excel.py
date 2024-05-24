@@ -20,8 +20,7 @@ class MTPPFileExcel(MTPPFile):
         ExcelファイルからMTPPDataクラスのインスタンスを作成
 
         Parameters:
-        filepath (str): Excelファイル名
-        sheet_name (str): Excelファイルのシート名
+        file (str): Excelファイル名
 
         Returns:
         MTPPDataクラスのインスタンス
@@ -48,9 +47,8 @@ class MTPPFileExcel(MTPPFile):
         Excelファイルにエクスポート
 
         Parameters:
+        file (str): Excelファイル名
         data (MTPPData) MTPPDataクラスのインスタンス
-        filepath (str): Excelファイル名
-        sheet_name (str): Excelファイルのシート名
         """
         sheet_name = kwargs.pop("sheet_name") if "sheet_name" in kwargs else "Sheet1"
 

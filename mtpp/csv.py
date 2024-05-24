@@ -18,8 +18,7 @@ class MTPPFileCSV(MTPPFileDSV):
         CSVファイルからMTPPDataクラスのインスタンスを作成
 
         Parameters:
-        filepath (str): CSVファイル名
-        encoding (str | None): CSVファイルのエンコーディング
+        file (str): CSVファイル名
 
         Returns:
         MTPPDataクラスのインスタンス
@@ -34,9 +33,8 @@ class MTPPFileCSV(MTPPFileDSV):
         CSVファイルにエクスポート
 
         Parameters:
+        file (str): CSVファイル名
         data (MTPPData) MTPPDataクラスのインスタンス
-        filepath (str): CSVファイル名
-        encoding (str | None): CSVファイルのエンコーディング
         """
         kwargs["dialect"] = "excel"
 
