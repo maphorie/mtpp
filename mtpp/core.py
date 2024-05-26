@@ -61,6 +61,12 @@ class MTPPData:
             return self._rows == value
         raise NotImplementedError
 
+    def __str__(self) -> str:
+        lines = []
+        for row in self._rows:
+            lines.append(f"{row}")
+        return "\n".join(lines)
+
     @property
     def data_frame(self):
         data_frame = copy.deepcopy(self._data_frame)
