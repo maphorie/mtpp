@@ -1,17 +1,17 @@
-all: style type lint test
+all: format lint test type
+
+format:
+	@echo $$'\e[33m========== format ==========\e[m'
+	@poetry run ruff format --line-length 127
 
 lint:
-	@echo $$'\e[33m========== pylint ==========\e[m'
-	@pylint --exit-zero .
-
-style:
-	@echo $$'\e[33m========== flake8 ==========\e[m'
-	@flake8 --exit-zero .
+	@echo $$'\e[33m==========  lint  ==========\e[m'
+	@poetry run ruff check --exit-zero
 
 test:
-	@echo $$'\e[33m========== pytest ==========\e[m'
-	@pytest
+	@echo $$'\e[33m==========  test  ==========\e[m'
+	@poetry run pytest
 
 type:
-	@echo $$'\e[33m==========  mypy  ==========\e[m'
-	@mypy .
+	@echo $$'\e[33m==========  type  ==========\e[m'
+	@poetry run mypy --ignore-missing-imports .
