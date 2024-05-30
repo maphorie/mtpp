@@ -1,4 +1,4 @@
-name: ci
+name: Lint
 
 on:
   - push
@@ -6,16 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -42,10 +33,4 @@ jobs:
 
       - name: Lint
         run: |
-          poetry run ruff check --exit-zero
-
-      - name: Test
-        env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: |
-          poetry run pytest
+          poetry run ruff check mtpp tests
