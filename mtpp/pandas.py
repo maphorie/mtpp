@@ -29,17 +29,7 @@ class MTPPPandas(MTPPCall):
         if not isinstance(data, MTPPData):
             raise TypeError
 
-        data_frame = data.data_frame
-
-        if isinstance(call_function, list):
-            for function in call_function:
-                if isinstance(function, tuple):
-                    function, *args = function  # type: ignore
-                    data_frame = function(data_frame, *args)
-                else:
-                    data_frame = function(data_frame)
-        else:
-            data_frame = call_function(data_frame, *args)
+        data_frame = call_function(data.data_frame, *args)
 
         return MTPPData(data_frame)
 

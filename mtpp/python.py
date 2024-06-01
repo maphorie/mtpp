@@ -26,19 +26,9 @@ class MTPPPython(MTPPCall):
         if not isinstance(data, MTPPData):
             raise TypeError
 
-        data = data.rows
+        rows = call_function(data.rows, *args)
 
-        if isinstance(call_function, list):
-            for function in call_function:
-                if isinstance(function, tuple):
-                    function, *args = function  # type: ignore
-                    data = function(data, *args)
-                else:
-                    data = function(data)
-        else:
-            data = call_function(data, *args)
-
-        return MTPPData(data)
+        return MTPPData(rows)
 
 
 #
