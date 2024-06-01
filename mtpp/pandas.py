@@ -18,7 +18,7 @@ class MTPPPandas(MTPPCall):
     実際の処理はクロージャ(関数，メソッド，ラムダ関数)をつくりそれを__call__メソッドに渡すことで行う
     """
 
-    def __call__(self, data: MTPPData, call_function, /, *args) -> MTPPData:
+    def __call__(self, data: MTPPData, call_function, /, *args, **kwargs) -> MTPPData:
         """
         Pandasで処理をするメソッド
 
@@ -29,7 +29,7 @@ class MTPPPandas(MTPPCall):
         if not isinstance(data, MTPPData):
             raise TypeError
 
-        data_frame = call_function(data.data_frame, *args)
+        data_frame = call_function(data.data_frame, *args, **kwargs)
 
         return MTPPData(data_frame)
 
