@@ -138,5 +138,5 @@ class MTPPCall(ABC):
     """
 
     @abstractmethod
-    def __call__(self, data: MTPPData, call_function, /, *args, **kwargs) -> MTPPData:
+    def __call__(self, data: MTPPData, call_function, *args, **kwargs) -> MTPPData:
         raise NotImplementedError

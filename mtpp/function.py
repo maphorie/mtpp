@@ -8,7 +8,7 @@ from .core import MTPPData
 #
 
 
-def merge_data(data1: MTPPData, data2: MTPPData, /, *args, **kwargs) -> MTPPData:
+def merge_data(data1: MTPPData, data2: MTPPData, *args, **kwargs) -> MTPPData:
     """
     2つのMTPPDataの表をマージ
 
