@@ -1,7 +1,7 @@
 from mtpp.core import MTPPData
 from mtpp.csv import MTPPFileCSV
 from mtpp.excel import MTPPFileExcel
-from mtpp.function import merge_data, select_column
+from mtpp.function import concat_data, merge_data, select_column
 from mtpp.pandas import (
     MTPPPandas,
     cumsum_of_column,
@@ -27,6 +27,7 @@ __all__ = [
     "MTPPFileXML",
     "MTPPPandas",
     "MTPPPython",
+    "concat_data",
     "cumsum_of_column",
     "empty_to_missing_value",
     "index_on_threshold",

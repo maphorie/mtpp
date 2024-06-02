@@ -21,6 +21,20 @@ def merge_data(left: MTPPData, right: MTPPData, *args, **kwargs) -> MTPPData:
     return MTPPData(data_frame)
 
 
+def concat_data(data_list: list[MTPPData], *args, **kwargs) -> MTPPData:
+    """
+    2つ以上のMTPPDataを結合
+
+    Parameters:
+    data_list (list[MTPPData]): データのリスト
+    """
+    data_frame_list = [data.data_frame for data in data_list]
+
+    data_frame = pandas.concat(data_frame_list, *args, **kwargs)
+
+    return MTPPData(data_frame)
+
+
 def select_column(data: MTPPData, columns: list[str]) -> MTPPData:
     """
     カラムを選択して返す
