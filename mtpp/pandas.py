@@ -18,7 +18,7 @@ class MTPPPandas(MTPPCall):
     実際の処理はクロージャ(関数，メソッド，ラムダ関数)をつくりそれを__call__メソッドに渡すことで行う
     """
 
-    def __call__(self, data: MTPPData, call_function, /, *args, **kwargs) -> MTPPData:
+    def __call__(self, data: MTPPData, call_function, *args, **kwargs) -> MTPPData:
         """
         Pandasで処理をするメソッド
 
@@ -43,7 +43,7 @@ def reset_index(data_frame: DataFrame) -> DataFrame:
     return data_frame.reset_index()
 
 
-def merge_data_frame(data_frame1: DataFrame, data_frame2: DataFrame, /, *args, **kwargs) -> DataFrame:
+def merge_data_frame(data_frame1: DataFrame, data_frame2: DataFrame, *args, **kwargs) -> DataFrame:
     return pandas.merge(data_frame1, data_frame2, *args, **kwargs)
 
 
@@ -63,15 +63,13 @@ def sort_values(data_frame: DataFrame, by: list[str]) -> DataFrame:
     return data_frame.sort_values(by)
 
 
-def sum_of_column(
-    data_frame: DataFrame, column: str, /, groupby: Optional[list[str]] = None, as_index: bool = True
-) -> DataFrame:
+def sum_of_column(data_frame: DataFrame, column: str, groupby: Optional[list[str]] = None, as_index: bool = True) -> DataFrame:
     if groupby is None:
         return data_frame[column].sum()
     return data_frame.groupby(groupby, as_index=as_index)[column].sum()
 
 
-def cumsum_of_column(data_frame: DataFrame, column: str, /, groupby: Optional[list[str]] = None) -> Series:
+def cumsum_of_column(data_frame: DataFrame, column: str, groupby: Optional[list[str]] = None) -> Series:
     if groupby is None:
         return data_frame[column].cumsum()
     return data_frame.groupby(groupby)[column].cumsum()
@@ -80,7 +78,6 @@ def cumsum_of_column(data_frame: DataFrame, column: str, /, groupby: Optional[li
 def rank_of_column(
     data_frame: DataFrame,
     column: str,
-    /,
     groupby: Optional[list[str]],
     method: Literal["average", "min", "max", "first", "dense"],
     ascending: bool = True,
