@@ -8,15 +8,15 @@ from .core import MTPPData
 #
 
 
-def merge_data(data1: MTPPData, data2: MTPPData, *args, **kwargs) -> MTPPData:
+def merge_data(left: MTPPData, right: MTPPData, *args, **kwargs) -> MTPPData:
     """
-    2つのMTPPDataの表をマージ
+    2つのMTPPDataをマージ
 
     Parameters:
-    data1 (MTPPData): 1つめのデータ
-    data2 (MTPPData): 2つめのデータ
+    left (MTPPData): 1つめのデータ
+    right (MTPPData): 2つめのデータ
     """
-    data_frame = pandas.merge(data1.data_frame, data2.data_frame, *args, **kwargs)
+    data_frame = pandas.merge(left.data_frame, right.data_frame, *args, **kwargs)
 
     return MTPPData(data_frame)
 
