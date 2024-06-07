@@ -23,21 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install poetry
+        run: |
+          pipx install poetry
+          poetry --version
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
-
-      - name: Upgrade pip
-        run: |
-          pip install --upgrade pip
-          pip --version
-
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          poetry --version
+          cache: 'poetry'
 
       - name: Install dependencies
         run: |
