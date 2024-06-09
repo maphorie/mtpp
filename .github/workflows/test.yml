@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -43,3 +47,5 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: |
           poetry run pytest tests
+
+    timeout-minutes: 5
